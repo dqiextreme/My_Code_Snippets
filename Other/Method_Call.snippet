@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Method_Call</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>_Mtd_bsf_visible</ID>
+          <ToolTip>_Mtd_bsf_visible</ToolTip>
+          <Default>_Mtd_bsf_visible</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp"><![CDATA[//metodo almacenado en otro form de nombre "datosSP.cs"
+public static string $_Mtd_bsf_visible$(string _Str_User)
+        {
+            DataSet _Ds_DataSet = new DataSet();
+            _Mtd_ConexSQL _Cda_SQL = new _Mtd_ConexSQL();
+
+            try
+            {
+                string _Str_SQL = "SELECT CASE [T3TUSERGROUP].[cgroup] WHEN '4' THEN '0' WHEN '1' THEN '0' WHEN '14' THEN '0' ELSE '1' END AS result FROM [T3TUSERGROUP] WHERE [T3TUSERGROUP].[cuser] = '" + _Str_User +"'";
+                _Ds_DataSet = _Cda_SQL._Mtd_RetornarDS(_Str_SQL);
+                if (_Ds_DataSet.Tables[0].Rows.Count > 0)
+                    return _Ds_DataSet.Tables[0].Rows[0]["result"].ToString().Trim();
+                else throw new Exception();
+            }
+            catch (Exception)
+            {
+                return "0";
+            }
+        }
+
+//llamando metodo desde otro formulario
+var result = datosSP.$_Mtd_bsf_visible$(_Str_User)]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

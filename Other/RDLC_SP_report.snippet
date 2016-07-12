@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>RDLC_SP_report</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>nombre_tableadapter_usar</ID>
+          <ToolTip>nombre_tableadapter_usar</ToolTip>
+          <Default>nombre_tableadapter_usar</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>SP_t1</ID>
+          <ToolTip>SP_t1</ToolTip>
+          <Default>SP_t1</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>nombre_SP_almacenado</ID>
+          <ToolTip>nombre_SP_almacenado</ToolTip>
+          <Default>nombre_SP_almacenado</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>dataset_usar</ID>
+          <ToolTip>dataset_usar</ToolTip>
+          <Default>dataset_usar</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>SP1</ID>
+          <ToolTip>SP1</ToolTip>
+          <Default>SP1</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>SP2</ID>
+          <ToolTip>SP2</ToolTip>
+          <Default>SP2</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>valor_buscar</ID>
+          <ToolTip>valor_buscar</ToolTip>
+          <Default>valor_buscar</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>report_viewer</ID>
+          <ToolTip>report_viewer</ToolTip>
+          <Default>report_viewer</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp"><![CDATA[//el tableadapter se inserta al momento de seleccionar el informe a mostrar
+//SP1 hace referencia al procedimiento almacenado en el dataset, se ubica desde el designer del mismo
+//SP2 hace referencia al SP almacenado en el servidor
+
+this.$nombre_tableadapter_usar$.$SP1$(this.$dataset_usar$.$SP2$, $valor_buscar$);
+this.$report_viewer$.RefreshReport();
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

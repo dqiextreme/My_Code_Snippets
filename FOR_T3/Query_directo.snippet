@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Query_directo</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[string _Str_Sql = "SELECT top 1 cidnotrecepc, cidrecepcion, cnumdocu FROM vst_reportenotaderecepcion WHERE cidnotrecepc='13960' AND cdelete = 0";
+
+DataTable tblregistros2 = Program._MyClsCnn._mtd_conexion._Mtd_RetornarDataset(_Str_Sql).Tables[0]; 
+
+var QR_cidnotrecepc = tblregistros2.Rows[0][0].ToString();
+var QR_cidrecepcion = tblregistros2.Rows[0][1].ToString();
+var QR_cnumdocu = tblregistros2.Rows[0][2].ToString();
+
+
+//foreach (DataRow drCurrent in tblregistros2.Rows)
+//{
+//    var r1 = drCurrent[0].ToString();
+//    var r2 = drCurrent[1].ToString();
+//    var r3 = drCurrent[2].ToString();
+//}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

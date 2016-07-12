@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>modelo_tabla</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>nombre_proyecto</ID>
+          <ToolTip>nombre_proyecto</ToolTip>
+          <Default>nombre_proyecto</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>carpeta_Modelos</ID>
+          <ToolTip>carpeta_Modelos</ToolTip>
+          <Default>carpeta_Modelos</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp"><![CDATA[namespace $nombre_proyecto$.$carpeta_Modelos$
+{
+    public partial class nombre_de_la_clase
+    {
+        public string campo1 { get; set; }
+        public int campo2 { get; set; }
+        public System.DateTime campo3 { get; set; }
+        public DateTime campo31 { get; private set; }
+        public decimal campo4 { get; set; }
+        /*
+         *
+         */
+        
+    }
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>WS_txt_local_SP</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>db_source</ID>
+          <ToolTip>db_source</ToolTip>
+          <Default>db_source</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>db_Stored_Procedure_name</ID>
+          <ToolTip>db_Stored_Procedure_name</ToolTip>
+          <Default>db_Stored_Procedure_name</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>a</ID>
+          <ToolTip>a</ToolTip>
+          <Default>a</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>b</ID>
+          <ToolTip>b</ToolTip>
+          <Default>b</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>c</ID>
+          <ToolTip>c</ToolTip>
+          <Default>c</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp"><![CDATA[[WebMethod]
+        public int select1()
+        {
+            string fileName = HttpContext.Current.Request.MapPath("log/registro.txt");
+            File.Delete(fileName);
+            string $db_source$ = @"Data Source=(localdb)\PRUEBAS;Initial Catalog=test_linqsql;Integrated Security=True";
+            string $db_Stored_Procedure_name$ = "_SP_ws_t3";
+
+            int retRecord;
+            using (SqlConnection conObjc = new SqlConnection($db_source$))
+            {
+                using (SqlCommand command = new SqlCommand($db_Stored_Procedure_name$, conObjc))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    if (conObjc.State != ConnectionState.Open)
+                    { conObjc.Open(); }
+                    retRecord = command.ExecuteNonQuery();
+                    SqlDataReader reader = command.ExecuteReader();
+                    
+                    while (reader.Read())
+                    {
+                        var $a$ = reader.GetValue(0).ToString();//campo 1 de la tabla sql
+                        var $b$ = reader.GetValue(1).ToString();//campo 2 de la tabla sql
+                        var $c$ = reader.GetValue(2).ToString();//campo 3 de la tabla sql
+                        WriteLog($a$, $b$, $c$);
+
+                    }
+                }
+            }
+            return retRecord;
+        }
+
+        //generar archivo .txt desde web service
+        [WebMethod]
+        private int WriteLog(string $a$, string $b$, string $c$)
+        {
+            int retRecord1;
+            string fileName = HttpContext.Current.Request.MapPath("log/registro.txt");
+            //File.Delete(fileName);
+            using (StreamWriter sw = File.AppendText(fileName))
+            {
+                // \t -> tabulacion
+                // \n -> salto de linea
+                sw.WriteLine($a$ + "\t" + $b$ + "\t" + $c$ + "\t\n" + DateTime.Now.ToString());
+                retRecord1 = 1;
+                escribir_local();
+            }
+            return retRecord1;
+        }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

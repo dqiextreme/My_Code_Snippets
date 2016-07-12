@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>WS_Stored_Pro_ins</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>var1</ID>
+          <ToolTip>variable_1</ToolTip>
+          <Default>var1</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>var2</ID>
+          <ToolTip>variable_2</ToolTip>
+          <Default>var2</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>db_source</ID>
+          <ToolTip>cadena_conexion_sql</ToolTip>
+          <Default>db_source</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>db_Stored_Procedure_name</ID>
+          <ToolTip>nombre_stored_procedure</ToolTip>
+          <Default>db_Stored_Procedure_name</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp"><![CDATA[[WebMethod]
+        public int wsins(string $var1$, string $var2$)
+        {
+            int retRecord;
+            string $db_source$ = @"Data Source=(localdb)\PRUEBAS;Initial Catalog=test_linqsql;Integrated Security=True";
+            string $db_Stored_Procedure_name$ = "_SP_ws_t2";
+
+            using (SqlConnection conObjc = new SqlConnection($db_source$))
+            {
+                using (SqlCommand command = new SqlCommand($db_Stored_Procedure_name$, conObjc))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("nombre_campo_tabla", SqlDbType.VarChar, 100).Value = $var1$;
+                    command.Parameters.Add("nombre_campo_tabla2", SqlDbType.VarChar, 100).Value = $var2$;
+
+                    if (conObjc.State != ConnectionState.Open)
+                    {
+                        conObjc.Open();
+                    }
+                    retRecord = command.ExecuteNonQuery();
+                }
+            }
+            return retRecord;
+        }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

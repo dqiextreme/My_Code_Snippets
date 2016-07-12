@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Re_Imprimir_RPT</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[//query para obtener datos para mandar al reporte
+string _Str_Sql = "SELECT top 1 cidnotrecepc, cidrecepcion, cnumdocu FROM vst_reportenotaderecepcion WHERE cidnotrecepc='" + Q_cidnotrecepc + "' AND cdelete = 0";
+
+                          //retorno un dataset directo
+DataTable tblregistros2 = Program._MyClsCnn._mtd_conexion._Mtd_RetornarDataset(_Str_Sql).Tables[0]; 
+
+//si se que solo existe una linea de resultado
+var QR_cidnotrecepc = tblregistros2.Rows[0][0].ToString();
+var QR_cidrecepcion = tblregistros2.Rows[0][1].ToString();
+var QR_cnumdocu = tblregistros2.Rows[0][2].ToString();
+
+//para recorrer varios
+//foreach (DataRow drCurrent in tblregistros2.Rows)
+//{
+//    var r1 = drCurrent[0].ToString();
+//    var r2 = drCurrent[1].ToString();
+//    var r3 = drCurrent[2].ToString();
+//}
+
+
+PrintDialog _Print = new PrintDialog();
+if (_Print.ShowDialog() == DialogResult.OK)
+{
+    Cursor = Cursors.WaitCursor;
+    //imprimo el reporte
+    REPORTESS _Frm = new REPORTESS(new string[] { "vst_reportenotaderecepcion" }, "", "T3.Report.rnoraderecepcion", "Section1", "cabecera", "rif", "nit", "ccompany='" + Frm_Padre._Str_Comp + "' and cgroupcomp='" + Frm_Padre._Str_GroupComp + "' and cidnotrecepc='" + QR_cidnotrecepc + "' and cidrecepcion='" + QR_cidrecepcion + "' and cdelete='0' and cnumdocu='" + QR_cnumdocu + "'", _Print, true);
+    
+    //muestro el reporte
+    _Frm.Show();
+    Cursor = Cursors.Default;
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Linq_Requeridos</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[/*esto va en el archivo de configuracion Program.cs*/
+
+//necesario para que corra en los demas formularios la DB conectada a linq
+//public static DataContext.prueba_linqDataContext dbContext;
+//DataContext -> carpeta donde guardo el archivo .dbml de la conexion "carpeta"
+//prueba_linqDataContext -> lo obtengo del archivo designer.cs del dbml
+//en esta seccion "public partial class prueba_linqDataContext : System.Data.Linq.DataContext"
+//dbContext es lo que usare en todoo para hacer referencia a la DB
+public static Datos.vistas_2DataContext db_Vista;
+
+//al inicio del formulario
+using testing_linq1.Datos;
+
+//
+public Form1()
+{
+InitializeComponent();
+//esto lo cargo desde el archivo program es necesario para ejecutar todos los linq e instanciar algunas funciones
+Program.db_Vista = new vistas_2DataContext();
+Program.db_Sp = new _SP_2DataContext();
+Program.db_tabla = new tablas_2DataContext();
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

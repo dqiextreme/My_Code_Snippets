@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>obtener_ip_www</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Object Editable="true">
+          <ID>pag1</ID>
+          <ToolTip>pagina_obtener_ip</ToolTip>
+          <Default>pag1</Default>
+          <Function>
+          </Function>
+          <Type>
+          </Type>
+        </Object>
+        <Object Editable="true">
+          <ID>ip1</ID>
+          <ToolTip>ip_resultado</ToolTip>
+          <Default>ip1</Default>
+          <Function>
+          </Function>
+          <Type>
+          </Type>
+        </Object>
+        <Object Editable="true">
+          <ID>dns2</ID>
+          <ToolTip>nombre_funcion</ToolTip>
+          <Default>dns2</Default>
+          <Function>
+          </Function>
+          <Type>
+          </Type>
+        </Object>
+      </Declarations>
+      <Code Language="csharp"><![CDATA[private static void $dns2$()
+        {
+            string $pag1$ = "www.sunahip.gob.ve";
+            string $ip1$ = string.Empty;
+            IPAddress[] address1 = Dns.GetHostAddresses($pag1$);
+            $ip1$ = address1[0].ToString();
+            foreach (var a in address1)
+            {
+                Console.WriteLine(a+":\n");
+            }
+            Console.WriteLine(address1[0]+"\n");
+            Console.WriteLine(address1.Count().ToString());
+            Console.ReadLine();
+        }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

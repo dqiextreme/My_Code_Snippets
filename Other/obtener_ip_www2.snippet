@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>obtener_ip_www2</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>dns1</ID>
+          <ToolTip>nombre_funcion</ToolTip>
+          <Default>dns1</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>url1</ID>
+          <ToolTip>url_obtener_ip</ToolTip>
+          <Default>url1</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp"><![CDATA[private static void $dns1$()
+        {
+            string $url1$ = "www.sunahip.gob.ve";
+            IPAddress[] addresslist = Dns.GetHostAddresses($url1$);
+            foreach (IPAddress theaddress in addresslist)
+            {
+                Console.WriteLine(theaddress.ToString());
+            }
+            Console.ReadLine();
+        }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

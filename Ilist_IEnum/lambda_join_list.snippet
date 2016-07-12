@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>lambda_join_list</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>Entities_DB</ID>
+          <ToolTip>Entities_DB</ToolTip>
+          <Default>Entities_DB</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>entidad</ID>
+          <ToolTip>entidad</ToolTip>
+          <Default>entidad</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>DB_table1</ID>
+          <ToolTip>user1</ToolTip>
+          <Default>user1</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>DB_table2</ID>
+          <ToolTip>puesto1</ToolTip>
+          <Default>puesto1</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>DB_table3</ID>
+          <ToolTip>departamento1</ToolTip>
+          <Default>departamento1</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>Modelos</ID>
+          <ToolTip>Modelos</ToolTip>
+          <Default>Modelos</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>modelo_gen</ID>
+          <ToolTip>modelo_gen</ToolTip>
+          <Default>modelo_gen</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp"><![CDATA[$Entities_DB$ $entidad$ = new $Entities_DB$();
+var a = $entidad$.$DB_table1$.Join($entidad$.$DB_table2$, a1 => a1.campo1, b1 => b1.campo2, (a1, b1) => new
+{
+    result1 = a1.campo,
+    result2 = a1.campo,
+    result3 = a1.campo,
+    result4 = a1.campo
+}).Join($entidad$.$DB_table3$, x => x.result4, c1 => c1.campon, (x, c1) => new $Modelos$.$modelo_gen$
+{
+    campo1_de_modelo_gen = x.result1,
+    campo2_de_modelo_gen = x.result2,
+    campo3_de_modelo_gen = x.result3,
+    campo4_de_modelo_gen = c1.campo,
+    campo5_de_modelo_gen = c1.campo
+}).ToList();
+/*
+--a partir del segundo join es cuando utilizas un join de 3 tablas en adelante
+--modelo_gen hace referencia bien sea a la estructura de la tabla en el archivo edmx o al modelo/clase realizado a mano para la estructura de una tabla
+--campos comparados -- a1.campo1 = b1.campo2 AND result4 = c1.campon
+/*]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>sql_direct</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[SqlConnection objConn = new SqlConnection(@"Data Source=(localdb)\PRUEBAS;Initial Catalog=pruebas1;Integrated Security=True");
+objConn.Open();
+
+SqlDataAdapter DBregistros = new SqlDataAdapter("Select * From registros", objConn);
+DataSet allreg = new DataSet("registros");
+DBregistros.FillSchema(allreg, SchemaType.Source, "registros");
+DBregistros.Fill(allreg, "registros");
+DataTable tblregistros;
+tblregistros = allreg.Tables["registros"];
+
+DGV.DataSource = tblregistros;
+foreach (DataRow drCurrent in tblregistros.Rows)
+{
+        //drCurrent["au_fname"].ToString(),
+        //drCurrent["au_lname"].ToString());
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

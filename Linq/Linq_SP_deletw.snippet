@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Linq_SP_deletw</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>db_Sp</ID>
+          <ToolTip>db_Sp</ToolTip>
+          <Default>db_Sp</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>SP_almacenada</ID>
+          <ToolTip>SP_almacenada</ToolTip>
+          <Default>SP_almacenada</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>nombre_data_grid</ID>
+          <ToolTip>nombre_data_grid</ToolTip>
+          <Default>nombre_data_grid</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>valores_a_eliminar</ID>
+          <ToolTip>valores_a_eliminar</ToolTip>
+          <Default>valores_a_eliminar</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp"><![CDATA[//Program.cs
+//public static Datos.vistas_2DataContext $db_Sp$;
+
+//formulario
+//elimino
+Program.$db_Sp$.$SP_almacenada$($valores_a_eliminar$);
+//actualizo el datagrid de ser necesario
+$nombre_data_grid$.DataSource = Program.$db_Sp$.$SP_almacenada$();]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

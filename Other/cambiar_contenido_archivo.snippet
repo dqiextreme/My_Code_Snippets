@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>cambiar_contenido_archivo</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[public static void readshort2()
+        {
+            /*
+                en la seccion public
+                private static string ruta1 = (@"C:\Users\asoftware8\Documents\Visual Studio 2010\Projects\entity_desktop\entity_desktop\");
+                private static System.IO.StreamReader filer2;
+                private static System.IO.StreamWriter file2;
+            */
+            filer2 = new System.IO.StreamReader(ruta1 + "App.Config");
+            file2 = new System.IO.StreamWriter(ruta1 + "App.Config");
+            var a = filer2.ReadToEnd();
+            var viejo = "initial catalog=test_linqsql1;";
+            var nuevo = "initial catalog=test_linqsql;";
+            var az = Regex.Split(a, viejo);
+
+            if (az.Count() > 1)
+            {
+                var an = az[0].ToString() + nuevo + az[1].ToString();
+                file2.Write(az[0].ToString() + nuevo + az[1].ToString());
+            }
+            else
+            {
+                file2.Write(a);
+            }
+            file2.Close();
+        }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

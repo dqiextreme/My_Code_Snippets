@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>IEnum_gen</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>modelo_tabla</ID>
+          <ToolTip>modelo_tabla</ToolTip>
+          <Default>modelo_tabla</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>Entities_de_la_DB</ID>
+          <ToolTip>Entities_de_la_DB</ToolTip>
+          <Default>Entities_de_la_DB</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp"><![CDATA[public static IEnumerable<$modelo_tabla$> SelecA()
+{
+    $Entities_de_la_DB$ entidad = new $Entities_de_la_DB$();
+    var a = entidad.$modelo_tabla$;
+    return a;
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

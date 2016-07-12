@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>CL_ejemplo_sql_query</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>nombre_data_grid_view</ID>
+          <ToolTip>nombre_data_grid_view</ToolTip>
+          <Default>nombre_data_grid_view</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>carpeta_calses</ID>
+          <ToolTip>carpeta_calses</ToolTip>
+          <Default>carpeta_calses</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>clase_cs</ID>
+          <ToolTip>clase_cs</ToolTip>
+          <Default>clase_cs</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>funcion_dentro_de_clase</ID>
+          <ToolTip>funcion_dentro_de_clase</ToolTip>
+          <Default>funcion_dentro_de_clase</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>sqlque</ID>
+          <ToolTip>sqlque</ToolTip>
+          <Default>sqlque</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>conexion</ID>
+          <ToolTip>conexion</ToolTip>
+          <Default>conexion</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp"><![CDATA[//formulario
+$nombre_data_grid_view$.DataSource = new $carpeta_calses$.$clase_cs$().$funcion_dentro_de_clase$("parametros");
+
+//en archivo de clases
+DataGridView $nombre_data_grid_view$ = new DataGridView();
+
+//abro la $conexion$ con la DB
+public SqlConnection $conexion$()
+{
+    SqlConnection objConn = new SqlConnection(@"Data Source=(localdb)\PRUEBAS;Initial Catalog=pruebas1;Integrated Security=True");
+    return objConn;
+}
+
+public DataTable comando_sql(string $sqlque$)
+{
+    SqlDataAdapter DBregistros = new SqlDataAdapter($sqlque$, $conexion$());
+    DataSet registro = new DataSet("reg");
+
+    //recupero el esquema de la DB
+    DBregistros.FillSchema(registro, SchemaType.Source);
+
+    //recupero los registros de la DB
+    DBregistros.Fill(registro, "registros");
+    
+    //lleno el DataTable que sera retornado para llenar el DataGridView
+    DataTable tblregistros = registro.Tables["registros"];
+    return tblregistros;
+}
+
+public DataTable general(string $sqlque$)
+{
+    DataTable tblregistros = comando_sql($sqlque$);
+    return tblregistros;
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
