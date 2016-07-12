@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>SQL_trans_message</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[//sqlq => query
+//sqlc => string de conexion
+public string SQL_print;
+public string sql_transaction(string sqlq, string sqlc)
+{
+//retorno mensaje directo del PRINT SQL
+//string resultado = Clases.NOMBRE_DE_LA_CLASE.sql_transaction(Clases.NOMBRE_DE_LA_CLASE.SQL_obtener_schem("NOMBRE_DE_LA_TABLA"),sqlc);
+    SqlConnection conn2 = new SqlConnection(sqlc);
+    conn2.Open();
+    SqlTransaction trans = conn2.BeginTransaction("test");
+    SqlCommand cmd2 = new SqlCommand(sqlq, conn2, trans);
+
+    try
+    {
+        conn2.InfoMessage += (object obj, SqlInfoMessageEventArgs e) => SQL_print = e.Message;
+        var res = cmd2.ExecuteNonQuery();
+        trans.Commit();
+        conn2.Close();
+        return SQL_print;
+    }
+    catch (Exception ex)
+    {
+        trans.Rollback();
+        conn2.Close();
+        return "";
+    }
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

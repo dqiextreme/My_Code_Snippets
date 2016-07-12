@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Sql_SP_command</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[SqlConnection Conn = new SqlConnection(@"Data Source=(localdb)\PRUEBAS;Initial Catalog=test_linqsql;Integrated Security=True");
+SqlCommand command = new SqlCommand("_SP_procedimiento", Conn);
+command.CommandType = CommandType.StoredProcedure;
+Conn.Open();
+command.ExecuteNonQuery();
+Conn.Close();
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

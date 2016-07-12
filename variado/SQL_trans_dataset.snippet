@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>SQL_trans_dataset</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[//todo va en una clase
+public static DataSet _ds = new DataSet();
+SqlDataReader reader1;
+Object[] SQL_fields;
+
+//sqlq => query
+//sqlc => string de conexion
+public DataSet trans_dataset(string sqlq, string sqlc)
+{
+//retorno dataset directamete
+//para cargarlo a un datagridview
+//dataGridView1.DataSource = trans_dataset(sqlq, sqlc).Tables[0];
+//para obtener solo valores deseados
+//Clases.NOMBRE_DE_LA_CLASE._ds.Tables[0].Rows[A][B]
+//A => fila -- B => columna
+
+
+    _ds.Tables.Add();
+            
+    SqlConnection conn2 = new SqlConnection(sqlc);
+    conn2.Open();
+    SqlTransaction trans = conn2.BeginTransaction("test");
+    SqlCommand cmd2 = new SqlCommand(sqlq, conn2, trans);
+
+    try
+    {
+        reader1 = cmd2.ExecuteReader();
+
+        for (int i = 0; i < reader1.VisibleFieldCount; i++)
+        {_ds.Tables[0].Columns.Add();}
+                
+        SQL_fields = new Object[reader1.FieldCount];
+
+        while (reader1.Read())
+        {
+            reader1.GetSqlValues(SQL_fields);
+            _ds.Tables[0].Rows.Add(SQL_fields);
+        }
+        reader1.Close(); trans.Commit(); conn2.Close();
+    }
+    catch (Exception ex)
+    {
+        trans.Rollback();
+        conn2.Close();
+    }
+    return _ds;
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

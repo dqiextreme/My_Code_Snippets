@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Form_Control</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>nav11</ID>
+          <ToolTip>nombre del control</ToolTip>
+          <Default>nombre_del_control</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp"><![CDATA[//formulario
+$nav11$.cargar(DataGridView1, web_service_test1BindingSource);
+
+
+//control
+//public partial class nav1 : UserControl{
+
+///declaro los elementos que usare en el control
+DataGridView DataGridView1 = new DataGridView();
+BindingSource bindingSource1 = new BindingSource();
+        
+//public nav1(){InitializeComponent();}
+
+//cargo los elementos del formulario al control para ser manipulados
+public void cargar(DataGridView dg1, BindingSource bs1)
+{
+    DataGridView1 = dg1;
+    bindingSource1 = bs1;
+}
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

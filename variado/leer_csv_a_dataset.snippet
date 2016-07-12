@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>leer_csv_a_dataset</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[public static DataSet dataset2 = new DataSet();
+//fileName => ubicacion del archivo csv => snippet = leer_archivo
+public void grid(string fileName)
+{
+    dataset2.Clear();
+    dataset2.Tables.Clear();
+    string delimiter = ",";
+    StreamReader sr = new StreamReader(fileName);
+
+    dataset2.Tables.Add();
+    dataset2.Tables[0].Columns.Add("COMPANIA");//0
+    dataset2.Tables[0].Columns.Add("FICHATRABAJADOR");//1
+    //cantidad de columnas
+
+    string allData = sr.ReadToEnd();
+    string[] rows = allData.Split("\r".ToCharArray());
+            
+    rows.ToList().ForEach(r => 
+                dataset2.Tables[0].Rows.Add(r.Split(delimiter.ToCharArray()).
+                Select(x => x.Replace('"', ' ').Trim()).
+                ToArray()));
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
