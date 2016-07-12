@@ -43,8 +43,12 @@ public DataSet trans_dataset(string sqlq, string sqlc)
     {
         reader1 = cmd2.ExecuteReader();
 
-        for (int i = 0; i < reader1.VisibleFieldCount; i++)
-        {_ds.Tables[0].Columns.Add();}
+        //for (int i = 0; i < reader1.VisibleFieldCount; i++)
+        //for (int i = 0; i < reader1.FieldCount; i++){
+        //    _ds.Tables[0].Columns.Add();}
+
+        for (int i = 0; i < reader1.FieldCount; i++){
+            _ds.Tables[0].Columns.Add(reader1.GetName(i).ToString());}
                 
         SQL_fields = new Object[reader1.FieldCount];
 
