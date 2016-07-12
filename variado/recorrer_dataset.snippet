@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>recorrer_dataset</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[Object[] Ds_Fields;
+//_Ds => dataset a recorrer
+public void Recorrer_Dataset(DataSet _Ds)
+{
+    foreach (DataRow item in _Ds.Tables[0].Rows)
+    {
+        Ds_Fields = new Object[Convert.ToInt32(item.ItemArray.Count())];
+        Ds_Fields = item.ItemArray;
+        var a = Ds_Fields[0].ToString();
+    }
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
