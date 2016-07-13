@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Cifrado_MD5</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[//using System.Security.Cryptography;
+public string cifradoMD5(string pass)
+{
+    byte[] hash = String_ByteArray(pass);
+    byte[] valorhash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(hash);
+    string cod = BitConverter.ToString(valorhash);
+    string cod2 = cod.Replace("-", "");
+    return cod2;
+}
+
+public Byte[] String_ByteArray(String _Pr_Str_Valor)
+{
+    return (new UnicodeEncoding()).GetBytes(_Pr_Str_Valor);
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

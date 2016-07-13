@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>EjecutarSP_dataset</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[//como realizar el llamado desde el formulario
+/*
+string sqlc = @"Data Source=(localdb)\PRUEBAS;Initial Catalog=test_linqsql1;Integrated Security=True;";
+string nombre_SP = "NOMBRE_SP";
+SqlParameter[] parametros_sp = new SqlParameter[1];
+parametros_sp[0] = new SqlParameter("@NOMBRE_PARAMETRO", SqlDbType.VarChar);
+parametros_sp[0].Value = VALOR_PARAMETRO;
+
+DataSet _ds = EjecutarSP_dataset(nombre_SP, parametros_sp, sqlc);
+*/
+
+public DataSet EjecutarSP_dataset(string nombreSP, SqlParameter[] parametroSP, string sqlc)
+{
+    DataSet Ds = new DataSet();
+    SqlConnection cone = new SqlConnection(sqlc);
+    try{
+        if (cone.State != ConnectionState.Open){
+            cone.Open();}
+        SqlCommand cmd2 = new SqlCommand(nombreSP, cone);
+        cmd2.CommandType = CommandType.StoredProcedure;
+        SqlDataAdapter Dt = new SqlDataAdapter();
+        Dt = new SqlDataAdapter(cmd2);
+        SqlParameter[] parametrossp = new SqlParameter[parametroSP.Length];
+        for (int i = 0; i < parametroSP.Length; i++){
+            parametrossp[i] = parametroSP[i];
+            cmd2.Parameters.Add(parametrossp[i]);
+        }
+        cone.Close(); Dt.Fill(Ds);
+        return Ds;
+    }catch (Exception ex){
+        cone.Close(); return Ds;
+    }
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

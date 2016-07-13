@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>SQL_ComboBox</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[//para pasar lo parametros
+/*
+string sqlc = @"Data Source=(localdb)\PRUEBAS;Initial Catalog=test_linqsql1;Integrated Security=True;";
+string sqlq = "SELECT VALUE1, VALUE2 FROM TABLA";
+DataSet _DS_DataSet = GENERO_EL_DATASET;
+
+VALUE1 => es lo que se muestra
+VALUE2 => es el valor de lo que se muestra
+
+comboBox1.DataSource = CLASE.SQL_ComboBox(_DS_DataSet, "VALUE1", "VALUE2");
+comboBox1.DisplayMember = "text";
+comboBox1.ValueMember = "value";
+comboBox1.SelectedValue = "null";
+*/
+
+public class CBL{
+    public string value { get; set; }
+    public string text { get; set; }
+}
+        
+public List<CBL> SQL_ComboBox(DataSet _Ds, string VALUE1, string VALUE2)
+{
+    List<CBL> ListCB = new List<CBL>();
+    foreach (DataRow _DRow in _Ds.Tables[0].Rows)
+    {
+        //if (_DRow[VALUE1].ToString().TrimEnd() != "" && _DRow[VALUE2].ToString().TrimEnd() != ""){
+            ListCB.Add(new CBL { 
+                value = _DRow[VALUE2].ToString(), 
+                text = _DRow[VALUE1].ToString() 
+            });
+        //}
+    }
+    return ListCB;
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

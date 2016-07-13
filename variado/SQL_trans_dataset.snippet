@@ -16,7 +16,6 @@
     </Header>
     <Snippet>
       <Code Language="csharp"><![CDATA[//todo va en una clase
-public static DataSet _ds = new DataSet();
 SqlDataReader reader1;
 Object[] SQL_fields;
 
@@ -31,7 +30,7 @@ public DataSet trans_dataset(string sqlq, string sqlc)
 //Clases.NOMBRE_DE_LA_CLASE._ds.Tables[0].Rows[A][B]
 //A => fila -- B => columna
 
-
+    DataSet _ds = new DataSet();
     _ds.Tables.Add();
             
     SqlConnection conn2 = new SqlConnection(sqlc);

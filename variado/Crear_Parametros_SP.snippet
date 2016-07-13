@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Crear_Parametros_SP</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[SqlParameter[] parametros_sp = new SqlParameter[1];
+parametros_sp[0] = new SqlParameter("@NOMBRE_PARAMETRO", SqlDbType.VarChar);
+parametros_sp[0].Value = VALOR_DEL_PARAMETRO;]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
