@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Dataset_To_List</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[//---
+var lista_gen = ds1.Tables[0].AsEnumerable().ToList();
+var result = lista_gen.Where(x => x.Field<string>("id") != "1").ToList();
+            
+foreach (var item in result)
+{
+    var result1 = item.Field<string>("id").ToString();
+}
+
+//---
+var lista_gen2 = ds1.Tables[0].AsEnumerable().Select(r => new{
+    v1 = r.Field<string>("id"),
+    v2 = r.Field<string>("descripcion")
+}).ToList();
+var result2 = lista_gen2.Where(x => x.v1 != "1").ToList();
+
+foreach (var item in result2)
+{
+    var result21 = item.v1.ToString();
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
