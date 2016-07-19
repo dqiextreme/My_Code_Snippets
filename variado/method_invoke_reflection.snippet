@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>method_invoke_reflection</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[public void methodinvoke(Form fr)
+{
+    //le indico que formulario usare antes de llamar el metodo, para hacerlo mas generico
+    //Form1 fr = new Form1();
+    //methodinvoke(fr);
+
+    //declaro el formulario dentro de la funcion
+    //Form1 form1 = new Form1();//form1 => fr
+            
+    //genero los parametro requeridos en el otro formulario
+    Object[] par = new object[2];
+    par[0] = "parametro 1";
+    par[1] = "parametro 2";
+
+    //obtengo la cantidad de parametros en caso de no recordarlo => realmente inutil pero bueno
+    Object[] par2 = new object[fr.GetType().GetMethod("test").GetParameters().Count()];
+
+    //resultado de un metodo pulico
+    //var a = fr.GetType().GetMethod("test").Invoke(fr,par);
+            
+    //obtengo las definiciones de los parametros
+    var b = fr.GetType().GetMethod("test").GetParameters();
+
+            
+    //tambien lo puedo hacer con clases NPI para que pero sirve
+    Clases.Gen_Bus_Run_final_3 gc = new Clases.Gen_Bus_Run_final_3();
+    var a = gc.GetType().GetMethod("testcla").Invoke(gc, par);
+
+    //////metodo en otro formulario / clase
+    ////public string test(string a1, int a2)
+    ////{
+    ////    //lo que necesite hacer
+    ////    return "resultado: " + a1 + "/" + a2.ToString();
+    ////}
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
