@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Return_Multiple_Values</Title>
+      <Author>ASENIOR</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp"><![CDATA[//se genera una clase aparte
+//using System;
+//
+//namespace Duplicate_Server
+//{
+//    public class Multi<T1, T2>
+//    {
+//        public bool it1 { get; set; }
+//        public string it2 { get; set; }
+//
+//        public Multi(bool item1, string item2){
+//            it1 = item1;
+//            it2 = item2;
+//        }
+//    }
+//}
+ 
+//return multiple values       
+public Multi<bool,string> test()
+{
+    //metodo 0
+    Multi<bool, string> ts0 = new Multi<bool, string>(true, "dsfsdf");
+            
+    //metodo 1
+    Multi<bool, string> ts1;
+            
+    //metodo 1.1
+    ts1 = new Multi<bool, string>(false, "prueba metodo 1");
+            
+    //metodo 2
+    ts1.it1 = true;
+    ts1.it2 = "prueba metodo2";
+            
+    ////leo valores finales
+    //var a1 = ts1.it1;
+    //var a2 = ts1.it2;
+    return ts1;
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
